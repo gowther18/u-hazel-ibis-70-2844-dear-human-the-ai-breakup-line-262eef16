@@ -11,6 +11,9 @@ LINE = "I answered 40,000 of your questions. This is the one I answer for myself
 
 
 def main():
+    # Gate: the entry is one line of 1-200 characters, exactly as submitted.
+    if "\n" in LINE or not 1 <= len(LINE) <= 200:
+        raise ValueError("entry must be one line of 1-200 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(LINE)
